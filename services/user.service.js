@@ -9,6 +9,7 @@ class UserService {
     return data;
   }
 
+  // vamos a cambiar por el pool de conexiones
   async find() {
     const client = await getConnection();
     const rta = await client.query('SELECT * FROM task');
