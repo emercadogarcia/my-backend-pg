@@ -1,8 +1,8 @@
-const { extend } = require('joi');
+//const { extend } = require('joi');
 const { Model, DataTypes, Sequelize } = require('sequelize');
 const sequelize = require('../../libs/sequelize');
 
-const USER_TABLE = 'USERS';
+const USER_TABLE = 'users';
 
 const UserSchema = {
   id: {
@@ -29,11 +29,11 @@ const UserSchema = {
 }
 
 class User extends Model {
-  static assocciate() {
+  static associate() {
     //asocciate
   }
   static config(sequelize) {
-    return- {
+    return {
       sequelize,
       tablename: USER_TABLE,
       modelName: 'User',
