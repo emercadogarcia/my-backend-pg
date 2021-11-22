@@ -32,6 +32,7 @@ class User extends Model {
   static associate() {
     //asocciate
   }
+
   static config(sequelize) {
     return {
       sequelize,
@@ -42,4 +43,4 @@ class User extends Model {
   }
 }
 
-module.exports = { USER_TABLE, UserSchema, User}
+module.exports = { USER_TABLE, UserSchema, User }
