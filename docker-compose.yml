@@ -40,5 +40,5 @@ services:
       - PMA_HOST=mysql #el nombre depende del nombre que se pogna al servicio
     ports:
       - 8080:80
-
+#configuramos de acuerdo a lo que se desea usar.
 
