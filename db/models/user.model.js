@@ -1,6 +1,6 @@
 //const { extend } = require('joi');
 const { Model, DataTypes, Sequelize } = require('sequelize');
-const sequelize = require('../../libs/sequelize');
+// const sequelize = require('../../libs/sequelize');
 
 const USER_TABLE = 'users';
 
@@ -23,7 +23,7 @@ const UserSchema = {
   createdAt: {
     allowNull: false,
     type: DataTypes.DATE,
-    field: ' create_at',
+    field: 'create_at',
     defaultValue: Sequelize.NOW
   }
 }
@@ -36,7 +36,7 @@ class User extends Model {
   static config(sequelize) {
     return {
       sequelize,
-      tablename: USER_TABLE,
+      tableName: USER_TABLE,
       modelName: 'User',
       timestamps: false
     }

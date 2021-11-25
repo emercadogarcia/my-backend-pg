@@ -1,3 +1,4 @@
+// con esta configuracion tenemos configurada la migracion:
 const { config } = require('./../config/config');
 
 const USER = encodeURIComponent(config.dbUser);
