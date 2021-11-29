@@ -9,7 +9,8 @@ revisamos el nuevo respositorio destino:
 `git remote -v`
 
 Para crear la instancia en heroku
-heroku addons:create heroku-postgresql:hobby-dev
+`heroku addons:create heroku-postgresql:hobby-dev`
+`heroku addons:docs heroku-postgresql`
 
 ## Revisar info de la base de datos elegida:
 `heroku pg:info`

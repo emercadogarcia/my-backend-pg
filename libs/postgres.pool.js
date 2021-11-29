@@ -1,17 +1,25 @@
+//const { string } = require('joi');
 const { Pool }= require('pg');
 
 const { config } = require('./../config/config');
 
-const USER = encodeURIComponent(config.dbUser);
-const PASSWORD = encodeURIComponent(config.dbPasword);
-const URI = `postgres://${USER}:${PASSWORD}@${config.dbHost}:${config.dbPort}/${config.dbName}`;
+let URI = '';
+
+if (config.isProd) {
+  URI = config.dbUrl;
+} else {
+  const USER = encodeURIComponent(config.dbUser);
+  const PASSWORD = encodeURIComponent(config.dbPasword);
+  const URI = `postgres://${USER}:${PASSWORD}@${config.dbHost}:${config.dbPort}/${config.dbName}`;
+}
 
   const pool = new Pool({
-    host: 'localhost',
-    port: 5432,
-    user: 'nico',
-    password: 'admin123',
-    database: 'my_store'
+    connectionString: URI
+    // host: 'localhost',
+    // port: 5432,
+    // user: 'nico',
+    // password: 'admin123',
+    // database: 'my_store'
   });
 
 module.exports = pool;
