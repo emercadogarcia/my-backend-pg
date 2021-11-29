@@ -17,3 +17,7 @@ Para crear la instancia en heroku
 
 ## Crear una rama de production desde la rama actual con todos los cambiso:
 `git checkout -b production`
+
+# Ejecutar las migraciones en produccion:
+`heroku run npm run migrations:run`
+asi de esta manera corremos todas las migraciones.
