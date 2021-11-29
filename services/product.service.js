@@ -4,7 +4,6 @@ const boom = require('@hapi/boom');
 // const pool = require('../libs/postgres.pool'); // se cambia por ORM
 //const sequelize = require('../libs/sequelize'); /// para sql directo
 const { models } = require('../libs/sequelize');
-const { date } = require('joi');
 
 class ProductsService {
 

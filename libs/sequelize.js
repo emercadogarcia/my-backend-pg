@@ -19,6 +19,7 @@ if (config.isProd) {
     }
   }
 }
+
 const sequelize = new Sequelize(config.dbUrl, options);
 
 // ejecutamos la  conexcion

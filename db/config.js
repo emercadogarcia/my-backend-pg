@@ -7,7 +7,7 @@ const { config } = require('./../config/config');
 
 module.exports = {
   development: {
-    url: codfig.dbUrl,
+    url: config.dbUrl,
     dialect: 'postgres',
   },
   production: {
