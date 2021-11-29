@@ -1,9 +1,10 @@
 const faker = require('faker');
+const { Op } = require('sequelize');
 const boom = require('@hapi/boom');
-
 // const pool = require('../libs/postgres.pool'); // se cambia por ORM
-
-const sequelize = require('../libs/sequelize');
+//const sequelize = require('../libs/sequelize'); /// para sql directo
+const { models } = require('../libs/sequelize');
+const { date } = require('joi');
 
 class ProductsService {
 
@@ -28,29 +29,45 @@ class ProductsService {
   }
 
   async create(data) {
-    const newProduct = {
-      id: faker.datatype.uuid(),
-      ...data
-    }
-    this.products.push(newProduct);
+    const newProduct = await models.Product.create(data);
     return newProduct;
   }
 
-  async find() {
-    const query = 'SELECT * FROM task';
-    const [data] = await sequelize.query(query);  //ya no usamos metada ya que contiene mas datos
-    return data;
+  async find(query) {
+    // const query = 'SELECT * FROM task';
+    // const [data] = await sequelize.query(query);  //ya no usamos metada ya que contiene mas datos
+    // return data;
+    const options = {
+      include: ['category'],
+      where: {}
+    }
+    const { limit, offset } = query;
+    if ( limit && offset ) {
+      options.limit = limit;
+      options.offset = offset;
+    }
+
+    const { price } = query;
+    if (price) {
+      options.where.price = price;
+    }
+    const { price_min, price_max } = query;
+    if (price_min && price_max) {
+      options.where.price = {
+        [Op.gte]: price_min,
+        [Op.lte]: price_max,
+      };
+    }
+
+    const products = await models.Product.findAll( options );
+    return products;
   }
 
   async findOne(id) {
-    const product = this.products.find(item => item.id === id);
-    if (!product) {
-      throw boom.notFound('product not found');
-    }
-    if (product.isBlock) {
-      throw boom.conflict('product is block');
-    }
-    return product;
+    const products = await models.Product.findByPk(id, {
+      include: ['category']
+    });
+    return products;
   }
 
   async update(id, changes) {

@@ -14,7 +14,10 @@ class UserService {
 
   //cambiamos por el models para utilizar de mejor manera
   async find() {
-    const rta = await models.User.findAll();
+    const rta = await models.User.findAll({
+      //agregamos la asociaicon::
+      include: 'customer'
+    });
     return rta;
   }
 

@@ -6,10 +6,10 @@ class CustomerService {
   constructor() {}
 
   async find() {
-    const rta = await models.Customer.findAll()
-    //   {
-    //   include: ['user']
-    // });
+    const rta = await models.Customer.findAll(
+      {
+      include: ['user']
+    });
     return rta;
   }
 
@@ -22,7 +22,14 @@ class CustomerService {
   }
 
   async create(data) {
-    const newCustomer = await models.Customer.create(data);
+    // como agregamos crear desde un solo endpoint iniciamos con el user. la linea sgte es manul.
+    //const newUser = await models.User.create(data.user);
+    //lo hacemos automatico
+    const newCustomer = await models.Customer.create(data,{
+      // ...data,
+      // userId: newUser.id
+      include: ['user']
+    });
     return newCustomer;
   }
 
