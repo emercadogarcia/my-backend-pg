@@ -14,3 +14,6 @@ Para crear la instancia en heroku
 
 ## Revisar info de la base de datos elegida:
 `heroku pg:info`
+
+## Crear una rama de production desde la rama actual con todos los cambiso:
+`git checkout -b production`
