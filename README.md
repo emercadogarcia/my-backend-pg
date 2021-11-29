@@ -1,7 +1,7 @@
 # Endpoint para trabajar con bases de datos Postgres
 
 ## Comandos para inicializar en heroku
-'git remote -v '
+`git remote -v`
 Para agregar conexion en HEROKU:
 'heroku git:remote -a [nombre app heroku]'
 
