@@ -1,10 +1,32 @@
 const Joi = require('joi');
 
 const id = Joi.number().integer();
-const name = Joi.string().min(3).max(15);
-const price = Joi.number().integer().min(10);
-const description = Joi.string().min(10);
-const image = Joi.string().uri();
+const fecha = Joi.date();
+const empresa = Joi.string().min(3).max(70);
+const trimestre = Joi.string().min(1).max(25);
+const regsanitario = Joi.string().max(30);
+const tipoproducto = Joi.string().max(20);
+const presentacion = Joi.string().max(100);
+const factrconv = Joi.number().integer().min(1);
+const materiaPrima = Joi.number()
+const clienteRazonsocial = Joi.string().max(50);
+const codigoUni = Joi.string().max(20);
+const nordenProd = Joi.string().max(20);
+const facturaDoc = Joi.string().max(20);
+const almacenSalreg = Joi.string().max(50);
+const regionalEntrega = Joi.string().max(50);
+const saldoAnterior = Joi.number();
+const importacionProd = Joi.number();
+const importMatprima = Joi.number();
+const cantFabricada = Joi.number();
+const cantLiberada = Joi.number();
+const devolucion = Joi.number();
+const ventas = Joi.number();
+const distribucionSuc = Joi.number();
+const destruccion = Joi.number();
+const saldoFinal = Joi.number();
+
+
 const categoryId = Joi.number().integer();
 
 const price_min = Joi.number().integer();
@@ -13,27 +35,31 @@ const price_max = Joi.number().integer();
 const limit = Joi.number().integer();
 const offset = Joi.number().integer();
 
-const createProductSchema = Joi.object({
-  name: name.required(),
-  price: price.required(),
-  description: description.required(),
-  image: image.required(),
-  categoryId: categoryId.required(),
+const createDataxlsSchema = Joi.object({
+  fecha: fecha.required(),
+  empresa: empresa.required(),
+  trimestre: trimestre.required(),
+  regsanitario: regsanitario.required(),
+  tipoproducto: tipoproducto.required(),
+  presentacion: presentacion.required(),
+  factrconv: factrconv.required(),
 });
 
-const updateProductSchema = Joi.object({
-  name: name,
-  price: price,
-  description: description,
-  image: image,
-  categoryId
+const updateDataxlsSchema = Joi.object({
+  fecha: fecha.required(),
+  empresa: empresa.required(),
+  trimestre: trimestre.required(),
+  regsanitario: regsanitario.required(),
+  tipoproducto: tipoproducto.required(),
+  presentacion: presentacion.required(),
+  factrconv: factrconv.required(),
 });
 
-const getProductSchema = Joi.object({
+const getDataxlsSchema = Joi.object({
   id: id.required(),
 });
 
-const queryProductSchema = Joi.object({
+const queryDataxlsSchema = Joi.object({
   limit,
   offset,
   price,
