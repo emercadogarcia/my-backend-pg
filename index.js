@@ -15,14 +15,14 @@ const options = {
     if (whitelist.includes(origin) || !origin) {
       callback(null, true);
     } else {
-      callback(new Error('no permitido'));
+      callback(new Error('No permitido'));
     }
   }
 }
 app.use(cors(options));
 
 app.get('/', (req, res) => {
-  res.send('Hola mi server en express');
+  res.send('Hola este es mi Server en Express con API implementada para la carga de los datos - [Edgar Mercado] ==> `+591 70203103`');
 });
 
 app.get('/nueva-ruta', (req, res) => {
