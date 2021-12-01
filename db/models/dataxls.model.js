@@ -166,4 +166,3 @@ class Dataxls extends Model {
 }
 
  module.exports = { Dataxls, DataxlsSchema, DATAXLS_TABLE };
-
