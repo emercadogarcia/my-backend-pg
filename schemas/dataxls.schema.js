@@ -7,12 +7,13 @@ const trimestre = Joi.string().min(1).max(25);
 const regsanitario = Joi.string().max(30);
 const tipoproducto = Joi.string().max(20);
 const presentacion = Joi.string().max(100);
-const factrconv = Joi.number().integer().min(1);
+const factorconv = Joi.number().integer().min(1);
 const materiaPrima = Joi.number()
 const clienteRazonsocial = Joi.string().max(50);
+const detalleMov = Joi.string().max(50);
 const codigoUni = Joi.string().max(20);
 const nordenProd = Joi.string().max(20);
-const facturaDoc = Joi.string().max(20);
+const facturaDoc = Joi.number().integer();
 const almacenSalreg = Joi.string().max(50);
 const regionalEntrega = Joi.string().max(50);
 const saldoAnterior = Joi.number();
@@ -25,12 +26,14 @@ const ventas = Joi.number();
 const distribucionSuc = Joi.number();
 const destruccion = Joi.number();
 const saldoFinal = Joi.number();
+const usuarioAlta = Joi.string().max(20);
 
-
+const price = Joi.number().integer().min(10);
 const categoryId = Joi.number().integer();
 
 const price_min = Joi.number().integer();
 const price_max = Joi.number().integer();
+//const price = Joi.number().integer();
 
 const limit = Joi.number().integer();
 const offset = Joi.number().integer();
@@ -42,7 +45,26 @@ const createDataxlsSchema = Joi.object({
   regsanitario: regsanitario.required(),
   tipoproducto: tipoproducto.required(),
   presentacion: presentacion.required(),
-  factrconv: factrconv.required(),
+  factorconv: factorconv.required(),
+  materiaPrima,
+  clienteRazonsocial,
+  detalleMov,
+  codigoUni,
+  nordenProd,
+  facturaDoc,
+  almacenSalreg,
+  regionalEntrega,
+  saldoAnterior,
+  importacionProd,
+  importMatprima,
+  cantFabricada,
+  cantLiberada,
+  devolucion,
+  ventas,
+  distribucionSuc,
+  destruccion,
+  saldoFinal,
+  usuarioAlta,
 });
 
 const updateDataxlsSchema = Joi.object({
@@ -52,7 +74,7 @@ const updateDataxlsSchema = Joi.object({
   regsanitario: regsanitario.required(),
   tipoproducto: tipoproducto.required(),
   presentacion: presentacion.required(),
-  factrconv: factrconv.required(),
+  factorconv: factorconv.required(),
 });
 
 const getDataxlsSchema = Joi.object({
@@ -70,4 +92,4 @@ const queryDataxlsSchema = Joi.object({
   })
 });
 
-module.exports = { createProductSchema, updateProductSchema, getProductSchema, queryProductSchema }
+module.exports = { createDataxlsSchema, updateDataxlsSchema, getDataxlsSchema, queryDataxlsSchema }

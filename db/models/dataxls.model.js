@@ -51,6 +51,11 @@ const DataxlsSchema = {
     allowNull: false,
     field: 'cliente_razonsocial'
   },
+  detalleMov: {
+    type: DataTypes.STRING(50),
+    allowNull: false,
+    field: 'detalle_movimiento'
+  },
   codigoUni: {
     type: DataTypes.STRING(20),
     allowNull: false,
@@ -58,12 +63,12 @@ const DataxlsSchema = {
   },
   nordenProd: {
     type: DataTypes.STRING(20),
-    allowNull: false,
+    allowNull: true,
     field: 'numero_orden_prod'
   },
   facturaDoc: {
-    type: DataTypes.STRING(20),
-    allowNull: false,
+    type: DataTypes.INTEGER,
+    allowNull: true,
     field: 'factura_documento'
   },
   almacenSalreg: {
@@ -121,13 +126,12 @@ const DataxlsSchema = {
   saldoFinal: {
     allowNull: false,
     type: DataTypes.REAL,
-    field: 'ssaldo_final'
+    field: 'saldo_final'
   },
   usuarioAlta: {
-    allowNull: false,
+    allowNull: true,
     type: DataTypes.STRING(15),
-    field: 'fecha_alta',
-    defaultValue: Sequelize.NOW,
+    field: 'usuario_alta',
   },
   fechaAlta: {
     allowNull: false,
@@ -150,7 +154,7 @@ const DataxlsSchema = {
 }
 
 class Dataxls extends Model {
-  static associate(models) {
+  static associate() {
     //asocciate
     //this.belongsTo(models.Category, { as: 'category' });
   }
@@ -159,7 +163,7 @@ class Dataxls extends Model {
     return {
       sequelize,
       tableName: DATAXLS_TABLE,
-      modelName: 'Datoxls',
+      modelName: 'Dataxls',
       timestamps: false
     }
   }
