@@ -13,7 +13,7 @@ const clienteRazonsocial = Joi.string().max(50);
 const detalleMov = Joi.string().max(50);
 const codigoUni = Joi.string().max(20);
 const nordenProd = Joi.string().max(20);
-const facturaDoc = Joi.number().integer();
+const facturaDoc = Joi.string().max(20);
 const almacenSalreg = Joi.string().max(50);
 const regionalEntrega = Joi.string().max(50);
 const saldoAnterior = Joi.number();
@@ -25,6 +25,7 @@ const devolucion = Joi.number();
 const ventas = Joi.number();
 const distribucionSuc = Joi.number();
 const destruccion = Joi.number();
+const saldoFinalprevio = Joi.number();
 const saldoFinal = Joi.number();
 const usuarioAlta = Joi.string().max(20);
 
@@ -63,6 +64,7 @@ const createDataxlsSchema = Joi.object({
   ventas,
   distribucionSuc,
   destruccion,
+  saldoFinalprevio,
   saldoFinal,
   usuarioAlta,
 });

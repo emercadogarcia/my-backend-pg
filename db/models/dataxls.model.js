@@ -43,12 +43,13 @@ const DataxlsSchema = {
   },
   materiaPrima: {
     type: DataTypes.REAL,
-    allowNull: false,
-    field: 'materia_prima'
+    allowNull: true,
+    field: 'materia_prima',
+    defaultValue: 0,
   },
   clienteRazonsocial: {
     type: DataTypes.STRING(50),
-    allowNull: false,
+    allowNull: true,
     field: 'cliente_razonsocial'
   },
   detalleMov: {
@@ -58,7 +59,7 @@ const DataxlsSchema = {
   },
   codigoUni: {
     type: DataTypes.STRING(20),
-    allowNull: false,
+    allowNull: true,
     field: 'codigo_uni'
   },
   nordenProd: {
@@ -67,7 +68,7 @@ const DataxlsSchema = {
     field: 'numero_orden_prod'
   },
   facturaDoc: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING(20),
     allowNull: true,
     field: 'factura_documento'
   },
@@ -77,61 +78,78 @@ const DataxlsSchema = {
     field: 'almacen_salida_reg'
   },
   regionalEntrega: {
-    allowNull: false,
+    allowNull: true,
     type: DataTypes.STRING(50),
     field: 'regional_entrega'
   },
   saldoAnterior: {
     allowNull: false,
     type: DataTypes.REAL,
-    field: 'saldo_anterior'
+    field: 'saldo_anterior',
+    defaultValue: 0,
   },
   importacionProd: {
-    allowNull: false,
+    allowNull: true,
     type: DataTypes.REAL,
-    field: 'importacion_producto'
+    field: 'importacion_producto',
+    defaultValue: 0,
   },
   importMatprima: {
-    allowNull: false,
+    allowNull: true,
     type: DataTypes.REAL,
-    field: 'import_materia_prima'
+    field: 'import_materia_prima',
+    defaultValue: 0,
   },
   cantFabricada: {
-    allowNull: false,
+    allowNull: true,
     type: DataTypes.REAL,
-    field: 'cantidad_fabricada'
+    field: 'cantidad_fabricada',
+    defaultValue: 0,
   },
   cantLiberada: {
-    allowNull: false,
+    allowNull: true,
     type: DataTypes.REAL,
-    field: 'cantidad_liberada'
+    field: 'cantidad_liberada',
+    defaultValue: 0,
   },
   devolucion: {
     allowNull: false,
     type: DataTypes.REAL,
+    defaultValue: 0,
   },
   ventas: {
     allowNull: false,
     type: DataTypes.REAL,
+    defaultValue: 0,
   },
   distribucionSuc: {
-    allowNull: false,
+    allowNull: true,
     type: DataTypes.REAL,
-    field: 'dist_sucursales'
+    field: 'dist_sucursales',
+    defaultValue: 0,
   },
   destruccion: {
-    allowNull: false,
+    allowNull: true,
     type: DataTypes.REAL,
+    defaultValue: 0,
+  },
+  saldoFinalprevio: {
+    allowNull: true,
+    type: DataTypes.REAL,
+    field: 'saldo_final_previo',
+    defaultValue: 0,
   },
   saldoFinal: {
     allowNull: false,
     type: DataTypes.REAL,
-    field: 'saldo_final'
+    field: 'saldo_final',
+    defaultValue: 0,
   },
   usuarioAlta: {
     allowNull: true,
     type: DataTypes.STRING(15),
     field: 'usuario_alta',
+    defaultValue:'ADMIN'
   },
   fechaAlta: {
     allowNull: false,
