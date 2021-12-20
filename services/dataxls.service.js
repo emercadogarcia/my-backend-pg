@@ -14,6 +14,11 @@ class DataXlsService {
     return newDataLoad;
   }
 
+  async createbd(data) {
+    const newDataLoad = await models.Dataxls.create(data);
+    return newDataLoad;
+  }
+
   async find(query) {
     // const query = 'SELECT * FROM task';
     // const [data] = await sequelize.query(query);  //ya no usamos metada ya que contiene mas datos

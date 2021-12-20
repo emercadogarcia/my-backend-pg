@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const routerApi = require('./routes');
+const { checkApiKey } = require('./middlewares/auth.handler');
 
 const { logErrors, errorHandler, boomErrorHandler, ormErrorHandler } = require('./middlewares/error.handler');
 
@@ -21,12 +22,14 @@ const options = {
 }
 app.use(cors(options));
 
+require('./utils/auth');
+
 app.get('/', (req, res) => {
-  res.send('Hola este es mi Server en Express con API implementada para la carga de los datos - [Edgar Mercado] ==> `+591 70203103`');
+  res.send('Server en Express con API implementada para la carga de los datos - [Edgar Mercado] ==> `+591 70203103`');
 });
 
-app.get('/nueva-ruta', (req, res) => {
-  res.send('Hola, soy una nueva ruta');
+app.get('/nueva-ruta', checkApiKey, (req, res) => {
+  res.send('Hola, prueba de servicio');
 });
 
 routerApi(app);

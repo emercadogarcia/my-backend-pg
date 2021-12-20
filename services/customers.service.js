@@ -1,5 +1,6 @@
 const boom = require('@hapi/boom');
 const { models } = require('../libs/sequelize');
+const bcrypt = require('bcrypt');
 
 class CustomerService {
 
@@ -25,7 +26,15 @@ class CustomerService {
     // como agregamos crear desde un solo endpoint iniciamos con el user. la linea sgte es manul.
     //const newUser = await models.User.create(data.user);
     //lo hacemos automatico
-    const newCustomer = await models.Customer.create(data,{
+    const hash = await bcrypt.hash(data.user.password,10);
+    const newData = {
+      ...data,
+      user: {
+        ...data.user,
+        password: hash
+      }
+    }
+    const newCustomer = await models.Customer.create(newData,{
       // ...data,
       // userId: newUser.id
       include: ['user']
