@@ -1,4 +1,7 @@
 const express = require('express');
+const passport = require('passport');
+
+const { checkRoles } = require('./../middlewares/auth.handler');
 
 const DataXlsService = require('./../services/dataxls.service');
 const validatorHandler = require('./../middlewares/validator.handler');
@@ -32,6 +35,8 @@ const service = new DataXlsService();
 // );
 
 router.post('/',
+  passport.authenticate('jwt', {session: false}),
+  checkRoles('admin','afiliado'),
   validatorHandler(createDataxlsSchema, 'body'),
   async (req, res, next) => {
     try {
