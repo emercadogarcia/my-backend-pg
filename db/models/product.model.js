@@ -13,9 +13,10 @@ const ProductSchema = {
     primaryKey: true,
     type: DataTypes.INTEGER
   },
-  name: {
+  title: {
     type: DataTypes.STRING,
     allowNull:false,
+    field: 'name',
   },
   image: {
     type: DataTypes.STRING,

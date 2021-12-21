@@ -28,6 +28,7 @@ CREATE TABLE datosxls	(
   ventas DECIMAL,
   distsucursales DECIMAL,
   bajadestruccion DECIMAL,
+  saldofinalprevio DECIMAL,
   saldofinal DECIMAL,
   usuario_alta VARCHAR(20)
 );
