@@ -16,7 +16,7 @@ router.post('/login',
           role: user.role
         }
         const token = jwt.sign(payload, config.claveK);
-        res.json(token); //orignal podemos usar {user,token} para devolver todo el profile y token
+        res.json({token}); //orignal podemos usar {user,token} para devolver todo el profile y token
       } catch (error) {
         next(error);
       }
