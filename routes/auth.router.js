@@ -22,4 +22,17 @@ router.post('/login',
       }
 });
 
+
+router.get('/profile',
+  passport.authenticate('jwt', {session: false}),
+  async (req, res, next) => {
+      try {
+        const user = req.user;
+        res.json({user});
+      } catch (error) {
+        next(error);
+      }
+});
+
+
 module.exports = router;
